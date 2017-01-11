@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="posts-index">
+    <div class="posts-left">
+      <div class="posts-left-search">
+        <input type="text">
+      </div>
+      <div class="post-left-content">
+        {{#each model as |post|}}
+          {{post-tile model=post}}
+        {{/each}}
+      </div>
+    </div>
+    <div class="posts-right">
+      {{post-full model=model.firstObject}}
+    </div>
+  </div>
+</div>
