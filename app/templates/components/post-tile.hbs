@@ -1,4 +1,4 @@
-<a href="" class="">
+{{#link-to 'posts.show' model.id}}
   <div class="author-image">
     <img src={{model.authorPhotoUrl}} alt="">
   </div>
@@ -6,4 +6,4 @@
     <div class="comment-count">3</div>
     <h3>{{model.title}}</h3>
   </div>
-</a>
+{{/link-to}}
