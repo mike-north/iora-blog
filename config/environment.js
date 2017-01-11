@@ -16,7 +16,10 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    DS: {
+      host: 'https://mike-demo-blog-api.herokuapp.com',
+      namespace: ''
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -43,7 +46,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    // ENV.DS.host = ''
   }
 
   return ENV;
