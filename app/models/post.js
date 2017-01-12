@@ -1,14 +1,15 @@
 import DS from 'ember-data';
 
-const { Model, attr } = DS;
+const { Model, attr, hasMany } = DS;
 
 export default Model.extend({
-  title: attr('string'),
   body: attr('string'),
+  title: attr('string'),
   authorName: attr('string'),
   authorPhotoUrl: attr('string'),
-  categoryName: attr('string'),
   featuredImageUrl: attr('string'),
+  categoryName: attr('string'),
+  createdAt: attr('date'),
   updatedAt: attr('date'),
-  createdAt: attr('date')
+  comments: hasMany('comments')
 });

@@ -7,19 +7,25 @@ moduleForComponent('post-full', 'Integration | Component | post full', {
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('model', {
+    title: 'My Post',
+    body: '## Hello Component!'
+  });
 
-  this.render(hbs`{{post-full}}`);
+  // let wasClickedCount = 0;
+  // let wasClickedArgs = null;
+  // this.on('wasClicked', function(args) {
+  //   wasClickedArgs = args;
+  //   wasClickedCount++;
+  // });
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs `{{post-full model=model}}`);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#post-full}}
-      template block text
-    {{/post-full}}
-  `);
+  this.$('.to-click').click();
+  let componentText = this.$().text().replace(/[\s]+/g, '');
+  assert.ok(componentText.indexOf('MyPost') >= 0, 'Title is present');
+  assert.ok(componentText.indexOf('HelloComponent!') >= 0, 'Body is present');
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  // assert.equal(wasClickedCount, 1, 'Clicked once');
+  // assert.equal(wasClickedArgs, 32, 'Click listener received 32');
 });

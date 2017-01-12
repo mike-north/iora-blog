@@ -7,19 +7,15 @@ moduleForComponent('post-tile', 'Integration | Component | post tile', {
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('post', {
+    title: 'My Post',
+    body: 'My title'
+  });
+  this.render(hbs `{{post-tile model=post}}`);
 
-  this.render(hbs`{{post-tile}}`);
+  let componentText = this.$().text().replace(/[\s]+/g, '');
 
-  assert.equal(this.$().text().trim(), '');
+  assert.ok(componentText.indexOf('MyPost') >= 0, 'title is present');
+  assert.ok(componentText.indexOf('Mytitle') >= 0, 'body is present');
 
-  // Template block usage:
-  this.render(hbs`
-    {{#post-tile}}
-      template block text
-    {{/post-tile}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
