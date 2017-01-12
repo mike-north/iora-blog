@@ -16,7 +16,7 @@ export function initialize(app) {
     shoeboxStore['user-agent'] = userAgent;
   } else {
     // ------ CLIENT SIDE RENDERING -----//
-    userAgent = shoeboxStore['user-agent'];
+    userAgent = shoeboxStore ? shoeboxStore['user-agent'] : '';
   }
   app.register('data:request', { 'user-agent': userAgent }, { instantiate: false, singleton: true });
 }

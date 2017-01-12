@@ -7,6 +7,7 @@ export default Controller.extend({
     return getOwner(this).lookup('data:location');
   }),
   req: computed(function() {
-    return getOwner(this).lookup('data:request');
+    let data = getOwner(this).lookup('data:request');
+    return data || {};
   })
 });
