@@ -46,8 +46,11 @@
     No comments yet
   </p>
 {{/each}}
-<textarea value={{postInfo.body}} class='reply-field'
-  onInput={{action (mut postInfo.body) value='target.value'}}></textarea>
+<textarea
+  value={{draftComment.body}}
+  class='reply-field'
+  onInput={{action (mut draftComment.body) value='target.value'}}>
+</textarea>
 
 <div class="post-actions">
   <button>Reply</button>
