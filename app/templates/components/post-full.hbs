@@ -2,7 +2,9 @@
   <img src={{model.authorPhotoUrl}} alt={{authorName}} class="author-portrait">
   <h1 class='post-title'>{{titleize model.title}}</h1>
   
-  <div class="metadata-row">
+  {{#if draftComment.metaToggled}}
+  <div class="metadata-row"
+    onClick={{action (mut draftComment.metaToggled) false}}>
     <div class="metadata-item author">
       <span class="metadata-item-label">By</span>
       <span class="metadata-item-value">{{model.authorName}}</span>
@@ -24,6 +26,10 @@
     </div>  
     {{/if}}
   </div>
+  {{else}}
+  <p
+    onClick={{action (mut draftComment.metaToggled) true}}>details...</p>
+  {{/if}}
 </div>
 
 
@@ -53,5 +59,6 @@
 </textarea>
 
 <div class="post-actions">
-  <button>Reply</button>
+  <button
+    onClick={{action saveComment model draftComment.body}}>Reply</button>
 </div>

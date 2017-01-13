@@ -6,5 +6,14 @@ const { JSONAPIAdapter } = DS;
 
 export default JSONAPIAdapter.extend({
   host,
-  namespace
+  namespace,
+  urlForCreateRecord(modelName, snapshot) {
+    switch (modelName) {
+      case 'comment':
+        let postId = snapshot.belongsTo('post').id;
+        return `${this.urlForFindRecord(postId, 'post', snapshot)}/comment`;
+      default:
+        return this._super(...arguments);
+    }
+  }
 });
