@@ -1,11 +1,26 @@
 /* eslint-env node*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var Filter = require('broccoli-filter');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
   });
+
+
+  function MyFilter(inputNode) {
+    Filter.call(this, inputNode);
+  }
+
+  MyFilter.prototype = Object.create(Filter.prototype);
+
+  MyFilter.prototype.processString = function(existingString) {
+    return '/* (c) 2017 Company */\n' + existingString;
+  };
+
+  MyFilter.prototype.extensions = ['js'];
+  MyFilter.prototype.targetExtension = 'js';
 
   app.import('./vendor/math.js');
 
@@ -22,5 +37,5 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  return new MyFilter(app.toTree());
 };
