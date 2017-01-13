@@ -1,9 +1,29 @@
 <p class='comment-body'>
-  {{model.body}}{{yield}}
+  {{#unless updateComment.isEditing}}
+    {{model.body}}{{yield}}
+  {{else}}
+    <textarea
+      value={{model.body}}
+    onInput={{action (mut model.body) value='target.value'}}>
+    </textarea>
+    <button onClick={{perform updateComment model}}>
+      Save
+    </button>
+  {{/unless}}
+  {{#if updateComment.isSavePending}}
+    <button onClick={{action 'cancelSave'}}>
+      Cancel Save
+    </button>
+  {{/if}}
 </p>
 
-<span class="delete-indicator">
-</span>
+<button class="delete-indicator"
+  disabled={{deleteComment.isRunning}}
+  onClick={{perform deleteComment}}>
+</button>
+<button class="edit-indicator"
+  onClick={{action (mut updateComment.isEditing) true}}>
+</button>
 
 {{#if model.updatedAt}}
   <span class="posted-at">

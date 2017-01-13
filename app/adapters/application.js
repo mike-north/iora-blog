@@ -15,5 +15,15 @@ export default JSONAPIAdapter.extend({
       default:
         return this._super(...arguments);
     }
+  },
+  urlForUpdateRecord(id, modelName, snapshot) {
+    switch (modelName) {
+      case 'comment':
+      case 'comments':
+        let postId = snapshot.belongsTo('post').id;
+        return `${this.urlForFindRecord(postId, 'post', snapshot)}/comment/${id}`;
+      default:
+        return this._super(...arguments);
+    }
   }
 });

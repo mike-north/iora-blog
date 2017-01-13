@@ -46,7 +46,9 @@
 <hr>
 
 {{#each model.comments as |comment|}}
-  {{post-comment model=comment}}
+  {{post-comment
+    model=comment
+    updateComment=updateComment}}
 {{else}}
   <p class="no-comments">
     No comments yet
