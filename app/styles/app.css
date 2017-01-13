@@ -1,8 +1,13 @@
+@import "_grid.css";
 html,
 body {
     padding: 0;
     margin: 0;
     font-family: sans-serif;
+}
+
+body {
+    padding-top: 70px;
 }
 
 .pull-right {
@@ -17,13 +22,13 @@ body {
     color: white;
     height: 100%;
     position: fixed;
-    top: 0;
+    top: 54px;
     border-right: 1px solid #bbb;
 }
 
 .posts-index .posts-right {
     position: absolute;
-    top: 0;
+    top: 54px;
     bottom: 0;
 }
 
@@ -105,18 +110,17 @@ body {
 }
 
 .post-tile .created-at {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: #999;
 }
 
 .post-tile .author-name {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     color: #000;
 }
 
 .post-tile .post-tease {
     color: #999;
-    font-size: 0.8rem;
 }
 
 .post-tile a {
@@ -147,7 +151,6 @@ body {
 
 .post-tile .draft-indicator {
     color: #fff;
-    font-size: 0.75rem;
     background: #900;
     padding: 2px 4px;
     border-radius: 3px;
@@ -205,10 +208,10 @@ body {
 }
 
 .post-full .metadata-row {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
     margin-left: 110px;
     margin-bottom: 20px;
-    height: 40px;
+    height: 60px;
     transition: all 0.3s;
 }
 
@@ -243,7 +246,6 @@ body {
 .post-full .reply-field {
     width: 100%;
     min-height: 40px;
-    border: 1px solid #ddd;
 }
 
 .post-full .metadata-row .metadata-item-value {
@@ -266,13 +268,33 @@ body {
 
 .post-comment p {
     display: inline-block;
-    width: calc(100% - 40px);
+    width: calc(100% - 150px);
+}
+
+.post-comment .delete-indicator:after,
+.post-comment .edit-indicator:after {
+    float: right;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: black;
+}
+
+.post-comment .delete-indicator:hover:after,
+.post-comment .edit-indicator:hover:after {
+    background: white;
 }
 
 .post-comment .delete-indicator:after {
     content: '⨉';
-    float: right;
-    color: black;
+}
+
+.post-comment .edit-indicator:after {
+    content: '✏️';
 }
 
 .post-comment:hover .delete-indicator:after {
@@ -280,11 +302,58 @@ body {
 }
 
 .post-comment .posted-at {
-    font-size: 0.7rem;
+    font-size: 1rem;
     color: #666;
     position: absolute;
     bottom: 4px;
     right: 4px;
     text-align: right;
     width: 300px;
+}
+
+
+/* btn */
+
+a.btn {
+    text-decoration: none;
+    color: darkblue;
+    background: white;
+    padding: 5px 12px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+a.btn:hover {
+    background: #ffa;
+    color: blue;
+}
+
+
+/* NAVBAR */
+
+nav.navbar {
+    display: block;
+    height: 54px;
+    background: #66e;
+    color: white;
+    padding: 12px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav.navbar .brand {
+    text-decoration: none;
+    color: white;
+    font-size: 2.3rem;
+    top: 0;
+}
+
+hr {
+    border-bottom: none;
+}
+
+input[type="search"] {
+    color: black;
 }
